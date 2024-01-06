@@ -1,0 +1,355 @@
+@charset "utf-8";
+
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+/*＝＝＝並び替えボタンチェックマークのCSS*/
+
+
+body{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+}
+
+img
+{
+  list-style: none;
+}
+
+.wrapper{
+  margin-top: 40px;
+  margin-bottom: 200px;
+  display: none;
+}
+
+.sort-btn{
+  width: 1280px;
+  background: #ffffff;
+  padding: 10px;
+  margin:auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.headerInfo
+{
+  padding-top: 7px;
+  padding-right: 20px;
+}
+
+.spacer {
+  flex-grow: 1; /* スペーサーが残りのスペースをすべて埋める */
+}
+
+.sort-btn dt{
+  font-weight: bold;
+  margin:0 0 10px 0;
+}
+
+.sort-btn dd{
+  margin:0 0 10px 0;
+}
+
+.sort-btn ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sort-btn li{
+  margin:0 10px 0 10px;
+  width:auto;
+}
+
+.sort-btn ul li{
+  position: relative;
+  cursor: pointer;
+  padding:0 0 0 25px;
+  margin:11px 10px 0 0;
+}
+
+
+
+/*チェックマークの設定*/
+.sort-btn ul.check li::before{
+  content: url(../media/rbtn_empty.png);
+  position: absolute;
+  top: -3px;
+  left: -4px;
+}
+
+.sort-btn ul li.active::before{/*現在地＝activeというクラス名がついたらチェックマークを出現*/
+  content: url(../media/rbtn_on.png);
+}
+.sort-btn ul.check {
+  margin-top: -4px;
+}
+
+@media only screen and (max-width: 1270px) {
+  body{
+    font-size: 14px;
+  }
+  .wrapper{
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  .sort-btn{
+    width: 100%;
+    background: #ffffff;
+    padding: 0;
+    padding-top: 0%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin:auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .sort-btn ul li{
+    width:auto;
+  }
+
+}
+@media only screen and (max-width: 900px) {
+  .sort-btn ul.check li{
+    display: none;
+  }
+  .sort-btn li{
+    margin:0px;
+    width:0px;
+  }
+}
+
+
+/*＝＝＝Muuriのレイアウトのための調整 */
+.grid {
+  position: relative;/*並び替えの基準点を指定*/
+  width: 1280px;
+  margin: auto;
+}
+
+/*各画像の横幅などの設定*/
+.item {
+  display: block;
+  position: absolute;
+  width: 406px;
+  height: 300px;
+  margin: 10px;
+  z-index: 1;
+  background: #f3f3f3;
+  color: #fff;
+  overflow:hidden;
+}
+
+/*内側のボックスの高さが崩れないように維持*/
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+.grid img{
+  width: 100%;
+  height: 300px;
+  /* width:100%; */
+  vertical-align: bottom;
+  position: relative;
+  
+}
+.grid img:hover{
+  transform:scale(1.05,1.05);
+  transition:0.2s all;
+}
+
+/*横幅が1270px以下になった際の指定*/
+@media only screen and (max-width: 1270px) {
+  .grid {
+    position: relative;
+    width: 100%;
+    margin-left: 2%;
+  }
+  .grid img{
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+  }
+  .item {
+    display: block;
+    position: absolute;
+    aspect-ratio: 400 / 306;
+    width: 31%;
+    height: auto;
+    margin: 0.5%;
+    z-index: 1;
+    background: #f3f3f3;
+    color: #fff;
+  }
+
+}
+@media only screen and (max-width: 900px) {
+
+  .grid {
+    position: relative;
+    width: 100%;
+    margin-left: 2.8%;
+  }
+  .item {
+    display: block;
+    position: absolute;
+    aspect-ratio: 400 / 306;
+    width: 46%;
+    height: auto;
+    margin: 0.5%;
+    z-index: 1;
+    background: #f3f3f3;
+    color: #fff;
+  }
+
+
+}
+
+
+/*＝＝＝fancyboxサムネイル背景と画像選択時の枠線の指定*/
+.fancybox-thumbs {
+    background: transparent!important;
+}
+
+.fancybox-thumbs__list a:before {
+    border: 6px solid #FA999B;
+}
+
+/*========= レイアウトのためのCSS ===============*/
+ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: #333;
+}
+
+a:hover,
+a:active{
+  text-decoration: none;
+}
+
+h1{
+  text-align: center;
+  font-size:6vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin:30px 0;
+}
+
+p{
+  margin:0 10px 10px 10px;
+  word-wrap : break-word;
+}
+
+
+/** Custom Select **/
+
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+  .custom-select-wrapper select {
+    display: none;
+  }
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+  }
+    .custom-select-trigger {
+      position: relative;
+      display: block;
+      width: 150px;
+      padding-left: 10px;
+      padding-top: 2px;
+      font-weight: 300;
+      color: #000000;
+      height: 28px;
+      background: #ffffff;
+      border-color: #cccccc;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 3px;
+      cursor: pointer; 
+    }
+    .custom-select-trigger::after {
+      float: right;
+      padding: 1px 10px 0px 0px;
+      content: url(../media/sort.png);
+    }
+  .custom-options {
+    position: absolute;
+    display: block;
+    top: 100%; left: 0; right: 0;
+    min-width: 100%;
+    margin: auto;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #ffffff;
+    transition: all .01s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+    padding: 4px 0px;
+    border-color: #cccccc;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .custom-select.opened .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+    .custom-option {
+      position: relative;
+      display: block;
+      color: #000000;
+      line-height: 42px;
+      cursor: pointer;
+      transition: all .01s ease-in-out;
+      text-align: center;
+    }
+
+    span{
+      font-weight: normal !important;
+    }
+
+
+
+/* ロード */
+.load {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  aspect-ratio: 1/1;
+  height: 20%;
+  width: auto;
+  background-color: #000000;
+  /* border: 1px solid #cacaca; */
+  font-size: 14px;
+  color: #fff;
+
+}
+/* .load img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+
