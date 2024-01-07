@@ -345,11 +345,17 @@ p{
   color: #fff;
 
 }
-/* .load img{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
+
+/* スクロールバー */
+
+::-webkit-scrollbar{
+  width: 2px;
+}
+::-webkit-scrollbar-track{
+  background-color: #ececec;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #000000;
+}
 
 
